@@ -31,6 +31,11 @@ async function run(){
      const booking = await bookingcollection.find(query).toArray();
      res.send(booking);
     })
+
+    app.get('/user',async(req, res) =>{
+      const users = await usercollection.find().toArray();
+      res.send(users);
+    })
     app.post('/booking', async(req, res) =>{
       const booking = req.body;
       const result = await bookingcollection.insertOne(booking);
