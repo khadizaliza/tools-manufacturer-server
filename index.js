@@ -16,13 +16,19 @@ async function run(){
   try{
     await client.connect();
     //console.log('Database connected')
-    const serviceCollection = client.db('tools_manufaturer').collection('service');
+    const servicecollection = client.db('tools_manufaturer').collection('service');
+    const bookingcollection = client.db('tools_manufaturer').collection('bookings');
     app.get('/service', async(req, res) =>{
       const query = {};
-      const cursor = serviceCollection.find(query);
+      const cursor = servicecollection.find(query);
       const service = await cursor.toArray();
       res.send(service);
-    })
+    });
+    app.post('/booking', async(req, res) =>{
+      const booking = req.body;
+      const result = await bookingcollection.insertOne(booking);
+      res.send(result);
+    });
   }
   finally{
 
