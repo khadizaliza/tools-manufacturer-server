@@ -24,6 +24,13 @@ async function run(){
       const service = await cursor.toArray();
       res.send(service);
     });
+
+    app.get('/service',async(req, res) =>{
+      const customar = req.query.customar;
+      const query = {customar: customar};
+     const booking = await bookingcollection.find(query).toArray();
+     res.send(booking);
+    })
     app.post('/booking', async(req, res) =>{
       const booking = req.body;
       const result = await bookingcollection.insertOne(booking);
