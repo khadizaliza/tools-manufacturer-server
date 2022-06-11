@@ -50,7 +50,7 @@ async function run(){
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-  res.send('Hello from tools manufaturer!')
+  res.send('Hello from tools manufaturer website!')
 })
 
 app.listen(port, () => {
